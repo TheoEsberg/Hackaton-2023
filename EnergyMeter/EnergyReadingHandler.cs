@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using System.Reflection;
 using System.Text.Json;
 
 namespace client.EnergyMeter;
@@ -13,9 +14,9 @@ public class EnergyReadingHandler : IEnergyReadingHandler
     public const string TopicPrefix = "foredev";
     private const string OperationEnergyReading = "EnergyReader";
     private const string OperationLog = "log";
-    public string NewData = " "; 
+    
 
-    public async Task HandleMessage(string topic, string payload)
+	public async Task HandleMessage(string topic, string payload)
     {
         var topicComponents = topic.Split("/");
         if (topicComponents.Length != 3 && topicComponents.Length != 4)
@@ -39,27 +40,28 @@ public class EnergyReadingHandler : IEnergyReadingHandler
     private Task HandleEnergyReader(string id, string payload)
     {
         var data = EnergyMeterDataParser.Parse(payload);
-        NewData = "THIS IS THE DATA LIKE YEAH!";
-
-		if (id == "Varberg_A")
-		{
-            NewData = JsonSerializer.Serialize(data);
-            //await GetData(data.ToString());
+       
+		//var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+		using (StreamWriter sw = 
+            new StreamWriter("C:\\Users\\Theo\\Desktop\\Hackaton\\Big App\\Minimal-API\\data.txt", true)){
+            sw.WriteLine(id + JsonSerializer.Serialize(data));
         }
 
-		if (id == "Varberg_B")
-        {
-            string jsonString = JsonSerializer.Serialize(data);
-            Console.WriteLine(jsonString);
-        }
+		//using (StreamWriter sw = new StreamWriter(path, false)) { sw.WriteLine(data); }
 
+		//if (id == "Varberg_A")
+		//{
+  //          return Task.CompletedTask;
+		//	//NewData = JsonSerializer.Serialize(data);
+		//	//await GetData(data.ToString());
+		//}
 
-
-        // ...
-        //Console.WriteLine($"id: {id} \npayload: {payload}");
-        //Console.WriteLine("Data: " + data);
+		//if (id == "Varberg_B")
+  //      {
+  //          string jsonString = JsonSerializer.Serialize(data);
+  //          Console.WriteLine(jsonString);
+  //      }
 
         return Task.CompletedTask;
     }
-
 }
