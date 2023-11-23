@@ -1,3 +1,4 @@
+using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace client.EnergyMeter;
@@ -12,6 +13,7 @@ public class EnergyReadingHandler : IEnergyReadingHandler
     public const string TopicPrefix = "foredev";
     private const string OperationEnergyReading = "EnergyReader";
     private const string OperationLog = "log";
+    public string NewData = " "; 
 
     public async Task HandleMessage(string topic, string payload)
     {
@@ -37,8 +39,15 @@ public class EnergyReadingHandler : IEnergyReadingHandler
     private Task HandleEnergyReader(string id, string payload)
     {
         var data = EnergyMeterDataParser.Parse(payload);
+        NewData = "THIS IS THE DATA LIKE YEAH!";
 
-        if (id == "Varberg_B")
+		if (id == "Varberg_A")
+		{
+            NewData = JsonSerializer.Serialize(data);
+            //await GetData(data.ToString());
+        }
+
+		if (id == "Varberg_B")
         {
             string jsonString = JsonSerializer.Serialize(data);
             Console.WriteLine(jsonString);
@@ -52,4 +61,5 @@ public class EnergyReadingHandler : IEnergyReadingHandler
 
         return Task.CompletedTask;
     }
+
 }

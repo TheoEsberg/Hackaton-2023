@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackaton-2023", "Hackaton-2023.csproj", "{B6EA2469-874F-40DD-810B-D29D024A72C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackaton-2023", "Hackaton-2023.csproj", "{B6EA2469-874F-40DD-810B-D29D024A72C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minimal-API", "..\Minimal-API\Minimal-API.csproj", "{A12CBCB7-4D3F-4384-84F0-6297292B372F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{837F3497-AF26-4F80-B1D8-2E64718BE899}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{B6EA2469-874F-40DD-810B-D29D024A72C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6EA2469-874F-40DD-810B-D29D024A72C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6EA2469-874F-40DD-810B-D29D024A72C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A12CBCB7-4D3F-4384-84F0-6297292B372F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A12CBCB7-4D3F-4384-84F0-6297292B372F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A12CBCB7-4D3F-4384-84F0-6297292B372F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A12CBCB7-4D3F-4384-84F0-6297292B372F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
